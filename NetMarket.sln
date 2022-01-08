@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{274ADE54-64D7-4B2D-9478-344DF5C2DDE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinesLogic", "BussinesLogic\BussinesLogic.csproj", "{834ED96C-32ED-4BBD-B9C3-F31A7DB9F294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{058632B7-794C-4FC4-A297-C28490565D79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{274ADE54-64D7-4B2D-9478-344DF5C2DDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{274ADE54-64D7-4B2D-9478-344DF5C2DDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{274ADE54-64D7-4B2D-9478-344DF5C2DDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{274ADE54-64D7-4B2D-9478-344DF5C2DDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834ED96C-32ED-4BBD-B9C3-F31A7DB9F294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834ED96C-32ED-4BBD-B9C3-F31A7DB9F294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834ED96C-32ED-4BBD-B9C3-F31A7DB9F294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834ED96C-32ED-4BBD-B9C3-F31A7DB9F294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{058632B7-794C-4FC4-A297-C28490565D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058632B7-794C-4FC4-A297-C28490565D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058632B7-794C-4FC4-A297-C28490565D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058632B7-794C-4FC4-A297-C28490565D79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AA42231-379C-4680-8729-A93BF57D3298}
+	EndGlobalSection
+EndGlobal
