@@ -25,9 +25,11 @@
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <None Remove="Dtos\" />
     <None Remove="Errors\" />
+    <None Remove="Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Errors\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
 </Project>
