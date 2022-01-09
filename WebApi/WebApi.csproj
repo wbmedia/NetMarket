@@ -24,8 +24,10 @@
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <None Remove="Dtos\" />
+    <None Remove="Errors\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
+    <Folder Include="Errors\" />
   </ItemGroup>
 </Project>

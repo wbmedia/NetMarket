@@ -9,15 +9,14 @@ using Core.Specifications;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Dtos;
+using WebApi.Errors;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductoController : ControllerBase
+    public class ProductoController : BaseApiController
     {
        private readonly IGenericRepository<Producto> _productoRespository;
-        private readonly IMapper _mapper; 
+       private readonly IMapper _mapper; 
 
        public ProductoController(IGenericRepository<Producto> productoRepository, IMapper mapper)
        {
@@ -38,6 +37,11 @@ namespace WebApi.Controllers
         {
             var spec = new ProductoWithCategoriaAndMarcaSpecification(id);
             var producto = await _productoRespository.GetByIdWithSpec(spec);
+
+            if(producto == null)
+            {
+                return NotFound(new CodeErrorResponse(404));
+            }
             return _mapper.Map<Producto, ProductoDto>(producto);
         }
 
