@@ -12,6 +12,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.13" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,7 @@
     <None Remove="Dtos\" />
     <None Remove="Errors\" />
     <None Remove="Middleware\" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />

@@ -39,6 +39,10 @@ namespace WebApi
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddDbContext<SeguridadDbContext>(x =>
+            {
+                x.UseSqlServer(Configuration.GetConnectionString("IdentitySeguridad"));
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

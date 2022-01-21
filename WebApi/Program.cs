@@ -26,6 +26,9 @@ namespace WebApi
                     var context = services.GetRequiredService<MarketDbContext>();
                     await context.Database.MigrateAsync();
                     await MarketDbContextData.LoadDataAsync(context, loggerFactory);
+
+                    var idenityContext = services.GetRequiredService<SeguridadDbContext>();
+                    await idenityContext.Database.MigrateAsync();
                 }
                 catch(Exception e)
                 {
