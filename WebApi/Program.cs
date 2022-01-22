@@ -20,6 +20,7 @@ namespace WebApi
         {
             var host = CreateHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope()) {
+
                 var services = scope.ServiceProvider;
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
 
@@ -37,7 +38,7 @@ namespace WebApi
                 catch(Exception e)
                 {
                     var logger = loggerFactory.CreateLogger<Program>();
-                    logger.LogError(e.Message, "Error en el proceso de Migración");
+                    logger.LogError(e, "Errores en el proceso de migracion");
                 }
             }
 

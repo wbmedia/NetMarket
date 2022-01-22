@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BussinesLogic.Data
 {
-	public class SeguridadDbContext : IdentityDbContext
+	public class SeguridadDbContext : IdentityDbContext<Usuario>
 	{
 		public SeguridadDbContext(DbContextOptions<SeguridadDbContext> options) : base(options) { }
 

@@ -20,8 +20,8 @@ namespace WebApi.Controllers
 
         public UsuarioController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [HttpPost("login")]

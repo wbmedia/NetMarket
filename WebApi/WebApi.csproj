@@ -28,10 +28,12 @@
     <None Remove="Errors\" />
     <None Remove="Middleware\" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Errors\" />
     <Folder Include="Middleware\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>

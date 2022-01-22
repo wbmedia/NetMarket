@@ -1,18 +1,12 @@
 ﻿using System;
-namespace Core.Entities
+namespace WebApi.Dtos
 {
-	public class Direccion
+	public class DireccionDto
 	{
-		public int Id { get; set; }
 		public string Calle { get; set; }
 		public string Ciudad { get; set; }
 		public string Departamento { get; set; }
-
 		public string CodigoPostal { get; set; }
-
-		public string UsuarioId { get; set; }
-
-		public Usuario Usuario { get; set; }
 	}
 }
 
