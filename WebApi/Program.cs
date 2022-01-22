@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BussinesLogic.Data;
+using Core.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,8 +29,10 @@ namespace WebApi
                     await context.Database.MigrateAsync();
                     await MarketDbContextData.LoadDataAsync(context, loggerFactory);
 
-                    var idenityContext = services.GetRequiredService<SeguridadDbContext>();
-                    await idenityContext.Database.MigrateAsync();
+                    var userManager = services.GetRequiredService<UserManager<Usuario>>();
+                    var identityContext = services.GetRequiredService<SeguridadDbContext>();
+                    await identityContext.Database.MigrateAsync();
+                    await SeguridadDbContextData.SeedUserAsync(userManager);
                 }
                 catch(Exception e)
                 {
