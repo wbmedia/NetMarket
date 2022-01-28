@@ -96,12 +96,6 @@ namespace WebApi
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
-            //if (env.IsDevelopment())
-            //{
-            //    //app.UseDeveloperExceptionPage();
-                
-            //}
-
             app.UseStatusCodePagesWithReExecute("/errors", "?code={0}");
 
             app.UseHttpsRedirection();
@@ -110,6 +104,8 @@ namespace WebApi
 
             app.UseCors("CorsRule");
 
+            app.UseAuthentication();
+    
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

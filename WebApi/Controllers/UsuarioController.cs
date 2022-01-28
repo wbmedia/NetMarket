@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +20,13 @@ namespace WebApi.Controllers
     {
         private readonly UserManager<Usuario> _userManager;
         private readonly SignInManager<Usuario> _signInManager;
+        private readonly ITokenService _tokenService;
 
-        public UsuarioController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
+        public UsuarioController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, ITokenService tokenService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _tokenService = tokenService;
         }
 
         [HttpPost("login")]
@@ -45,7 +50,7 @@ namespace WebApi.Controllers
             {
                 Email = usuario.Email,
                 Username = usuario.UserName,
-                Token = "Este es el token del usuario",
+                Token = _tokenService.CreateToken(usuario),
                 Nombre = usuario.Nombre,
                 Apellido = usuario.Apellido
             };
@@ -73,10 +78,44 @@ namespace WebApi.Controllers
             {
                 Nombre = usuario.Nombre,
                 Apellido = usuario.Apellido,
-                Token = "Este es el token del usuario.",
+                Token = _tokenService.CreateToken(usuario),
                 Email = usuario.Email,
                 Username = usuario.UserName,
             };
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<UsuarioDto>> GetUsuario()
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var usuario = await _userManager.FindByEmailAsync(email);
+            return new UsuarioDto
+            {
+                Nombre = usuario.Nombre,
+                Apellido = usuario.Apellido,
+                Email = usuario.Email,
+                Username = usuario.UserName,
+                Token = _tokenService.CreateToken(usuario)
+            };
+        }
+
+        [HttpGet("emailvalido")]
+        public async Task<ActionResult<bool>> ValidarEmail([FromQuery]string email)
+        {
+            var usuario = await _userManager.FindByEmailAsync(email);
+            if (usuario == null) return false;
+            return true;
+        }
+
+        [Authorize]
+        [HttpGet("direccion")]
+        public async Task<ActionResult<Direccion>> GetDireccion()
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var usuario = await _userManager.FindByEmailAsync(email);
+
+            return usuario.Direccion;
         }
     }
 }
